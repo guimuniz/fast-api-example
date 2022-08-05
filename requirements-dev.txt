@@ -1,0 +1,13 @@
+-r requirements.txt
+
+ipdb
+ipython
+pre-commit
+pytest
+pytest-asyncio
+pytest-cov
+pytest-httpx
+pytest-mock
+requests
+black
+flake8
