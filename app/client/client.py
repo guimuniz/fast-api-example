@@ -3,9 +3,10 @@ import json
 
 import httpx
 from fastapi_utils.enums import StrEnum
+from app.client.auth import ExampleAuth
 
 from app.client.exceptions import BadGatewayException
-from app.core.config import Settings
+from app.core.config import settings
 
 
 class HttpMethods(StrEnum):
@@ -14,9 +15,6 @@ class HttpMethods(StrEnum):
     PUT = "put"
     PATCH = "patch"
     DELETE = "delete"
-
-
-settings = Settings()
 
 
 class Client:
@@ -28,7 +26,7 @@ class Client:
         args = {
             "url": f'{self.base_url}{url}',
             "timeout": 15,
-            "auth": "",
+            "auth": ExampleAuth(),
         }
         if body:
             args["data"] = json.dumps(body)
